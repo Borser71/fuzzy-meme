@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Студия стрижки | Парикмахерская</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            background-color: #fefaf6;
+            color: #2c1a12;
+            line-height: 1.5;
+        }
+
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Шапка */
+        .header {
+            background-color: #fff6ef;
+            border-bottom: 1px solid #ffe1cc;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 246, 239, 0.9);
+            z-index: 10;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: #b45f3b;
+        }
+
+        .logo span {
+            font-weight: 400;
+            color: #5a3e2e;
+            font-size: 1rem;
+        }
+
+        .contacts-header {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .contacts-header a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c1a12;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contacts-header a:hover {
+            color: #b45f3b;
+        }
+
+        /* Герой-секция */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #3a2419;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #5f4a3a;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .hero .badge {
+            background-color: #ffe6d9;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            margin-top: 24px;
+            color: #b45f3b;
+        }
+
+        /* Услуги */
+        .services {
+            padding: 60px 0;
+            background: #fffaf5;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 48px;
+            color: #2c1a12;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 28px 20px;
+            border-radius: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+            border: 1px solid #f7e5da;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #b45f3b;
+        }
+
+        .service-card p {
+            color: #6f5543;
+            margin-bottom: 16px;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #2c1a12;
+            margin-top: 12px;
+        }
+
+        /* О нас / преимущества */
+        .about {
+            padding: 60px 0;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            background: #fef4ed;
+            padding: 24px 16px;
+            border-radius: 32px;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 1.5rem;
+            color: #b45f3b;
+            margin-bottom: 8px;
+        }
+
+        /* Контакты и часы */
+        .contact-section {
+            background: #2c1a12;
+            color: #ffefea;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: #ffdccc;
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            margin: 32px 0 24px;
+        }
+
+        .contact-details a {
+            color: #ffefea;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            background: rgba(255,255,240,0.1);
+            padding: 12px 24px;
+            border-radius: 60px;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-details a:hover {
+            background: #b45f3b;
+            color: white;
+        }
+
+        .hours {
+            margin-top: 20px;
+            font-size: 1rem;
+            background: rgba(255,255,240,0.05);
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 40px;
+        }
+
+        .hours p {
+            margin: 4px 0;
+        }
+
+        /* подвал */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 0.85rem;
+            background: #faf0ea;
+            color: #5e3e2c;
+        }
+
+        @media (max-width: 680px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .header-inner {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .contact-details {
+                gap: 20px;
+            }
+            .container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-inner">
+        <div class="logo">
+            ✂️ HAIR&STYLE <span>барбершоп</span>
+        </div>
+        <div class="contacts-header">
+            <a href="tel:+79123456789">📞 +7 (912) 345-67-89</a>
+            <a href="mailto:hello@hairstyle.ru">✉️ hello@hairstyle.ru</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1>Стильная стрижка<br>и забота о волосах</h1>
+            <p>Мужские, женские и детские стрижки. Окрашивание, укладка — только проверенные техники и натуральная косметика.</p>
+            <div class="badge">✂️ Работаем без записи ❄️ Чай/кофе в подарок</div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💇‍♂️</div>
+                    <h3>Мужская стрижка</h3>
+                    <p>Классика, fade, текстура — подберем образ</p>
+                    <div class="price">от 900 ₽</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💇‍♀️</div>
+                    <h3>Женская стрижка</h3>
+                    <p>Каскад, боб, пикси, челка мечты</p>
+                    <div class="price">от 1200 ₽</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Окрашивание</h3>
+                    <p>Тонирование, брондирование, шатуш</p>
+                    <div class="price">от 2200 ₽</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧔</div>
+                    <h3>Борода / Усы</h3>
+                    <p>Моделирование, коррекция, горячее полотенце</p>
+                    <div class="price">от 550 ₽</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <div class="features">
+                <div class="feature-item"><strong>⭐ 4.9</strong> отзывов на картах</div>
+                <div class="feature-item"><strong>🕒 10+ лет</strong> в центре города</div>
+                <div class="feature-item"><strong>🧴 японская косметика</strong> и европейские бренды</div>
+                <div class="feature-item"><strong>🏆 стилисты топ-уровня</strong> с портфолио</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title" style="color: #ffdccc;">Запишитесь или приезжайте</h2>
+            <div class="contact-details">
+                <a href="tel:+79123456789">📞 +7 (912) 345-67-89</a>
+                <a href="mailto:hello@hairstyle.ru">✉️ hello@hairstyle.ru</a>
+            </div>
+            <div class="hours">
+                <p>🕒 Ежедневно: 10:00 – 21:00</p>
+                <p>📍 г. Москва, ул. Тверская, 22 (цокольный этаж, вход с арки)</p>
+                <p>💳 Наличные, карты, оплата онлайн</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 Студия HAIR&STYLE — стрижки и уход без записи, живое общение.<br>Мы используем только проверенные материалы и индивидуальный подход.</p>
+    </div>
+</footer>
+</body>
+</html>
